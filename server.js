@@ -1,14 +1,16 @@
 const express = require('express');
 const app = express();
-const { chromium } = require('playwright');
+const { getPageTitle } = require('./script'); // Import the function from script.js
 
 app.get('/', async (req, res) => {
-    const browser = await chromium.launch();
-    const page = await browser.newPage();
-    await page.goto('https://example.com');
-    const title = await page.title();
-    await browser.close();
-    res.send(`Page title: ${title}`);
+    try {
+        const url = req.query.url || 'https://example.com'; // Allow URL to be passed as a query parameter
+        const title = await getPageTitle(url);
+        res.send(`Page title: ${title}`);
+    } catch (error) {
+        console.error('Error fetching page title:', error);
+        res.status(500).send('An error occurred while fetching the page title.');
+    }
 });
 
 const PORT = process.env.PORT || 3000;
