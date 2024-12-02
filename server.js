@@ -268,6 +268,7 @@ async function executeNavigation(page) {
 
 async function magicWorks(data) {
   const { clients, credentials } = data;
+  logMessage('green', 'Iniciando processamento de guias...', data);
   try {
     const { page, browser } = await loginAndNavigate(
       executeNavigation,
