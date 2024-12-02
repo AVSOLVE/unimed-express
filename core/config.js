@@ -3,10 +3,6 @@ const path = require('path');
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 module.exports = {
-  credentials:{
-    login: process.env.LOGIN,
-    password: process.env.PASSWORD
-  },
   urls: {
     loginPage: 'https://portal.unimedpalmas.coop.br/',
     targetPage: 'https://portal.unimedpalmas.coop.br/wheb_gridDet.jsp',

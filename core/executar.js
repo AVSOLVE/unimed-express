@@ -61,11 +61,12 @@ async function executeNavigation(page) {
   await frame.getByText('» Executar requisição').click();
 }
 
-async function magicWorks() {
+async function magicWorks(data) {
   const fileContent = 0
   // const fileContent = await fs.readFile('guiasExecutar.csv', 'utf-8');
   // const lines = fileContent.trim().split('\n');
   const lines = 0
+  console.log('lines', data)
 
   try {
     const { page, browser } = await loginAndNavigate(executeNavigation);
